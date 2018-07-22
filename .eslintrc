@@ -1,0 +1,19 @@
+{
+  "extends": "airbnb",
+  "env": {
+        "node": true
+    },
+  "rules": {
+     "linebreak-style": 0,
+     "no-eval": ["off", {"allowIndirect": true}],
+     "comma-dangle": "off",
+     "no-console": "off",
+     "indent": "off",
+     "consistent-return": "off",
+     "new-cap": "off",
+     "no-plusplus": "off",
+     "no-restricted-syntax": "off",
+     "guard-for-in": "off",
+     "no-loop-func": "off"
+    }
+}
