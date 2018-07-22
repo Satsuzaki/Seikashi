@@ -1,6 +1,6 @@
 {
-    "d_token" : "YOUR DISCORD APP TOKEN",
-	"adminID" : "YOUR DISCORD USER ID",
-    "prefix" : "++",
+    "d_token" : "NDcwNTc3NTY2MDA5MjYyMDgw.DjYikA.9jO7x2ozrzTeWE443bDaPmvxNbE",
+	"adminID" : "213322033692409857",
+    "prefix" : "$",
 	"passes" : 1 //can be increased to reduce packetloss at the expense of upload bandwidth, 4-5 should be lossless at the expense of 4-5x upload
 }
