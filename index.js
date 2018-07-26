@@ -1,8 +1,8 @@
 /* Annonce des constances */
 const Discord = require('discord.js');
-const YTDL = require("ytdl-core");
 const bot = new Discord.Client()
 const prefix = '$';
+const YTDL = require("ytdl-core");
 var servers = {};
 
 function play(connection, message) {
@@ -42,7 +42,9 @@ bot.on("message", function(message) {
         queue: []
     };
     var server = servers[message.guild.id];
+    
     server.queue.push(args[1]);
+
     if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
         play(connection, message);
     });
