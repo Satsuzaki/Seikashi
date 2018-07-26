@@ -1,6 +1,5 @@
 /* Annonce des constances */
 const Discord = require('discord.js');
-const opusscript = require("opusscript");
 const YTDL = require("ytdl-core");
 const bot = new Discord.Client()
 const prefix = '$';
