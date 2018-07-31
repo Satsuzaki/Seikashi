@@ -6,7 +6,7 @@ const prefix = '$';
 /* Lancement du Bot */
 bot.on('ready', () => {
     console.log('Bot activé')
-    bot.user.setGame(' ')
+    bot.user.setGame('être en développement')
 });
 
 /* Commandes Utiles */
