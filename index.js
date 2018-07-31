@@ -1,64 +1,40 @@
 /* Annonce des constances */
-const Discord = require('discord.js');
-const YTDL = require("ytdl-core");
+const Discord = require('discord.js')
 const bot = new Discord.Client()
 const prefix = '$';
-var servers = {};
-
-function play(connection, message) {
-    var server = servers[message.guild.id];
-    server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-    server.queue.shift();
-    server.dispatcher.on("end", function() {
-        if (server.queue[0]) play(connection, message);
-        else connection.disconnect
-    });
-}
 
 /* Lancement du Bot */
 bot.on('ready', () => {
     console.log('Bot activé')
-    bot.user.setGame('écouter Spotify')
+    bot.user.setGame('être en développement')
 });
 
+/* Commandes Utiles */
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
     if (!message.content.startsWith(prefix)) return;
     var args = message.content.substring(prefix.length).split(" ");
-    switch (args[0].toLowerCase()) {
-    case "yo":
-        message.channel.send("Bonjour")
-    break;
-    case "play":
-    if (!args[1]) {
-        message.channel.sendMessage("Insérer un lien, s'il vous plait");
-        return;
-    }
-    if (!message.member.voiceChannel) {
-        message.channel.sendMessage("Rejoignez un channel vocal, s'il vous plait");
-        return;
-    }
-    if (!servers[message.guild.id]) servers[message.guild.id] = {
-        queue: []
-    };
-    var server = servers[message.guild.id];
-    
-    server.queue.push(args[1]);
+    switch (args[0].toLowerCase()) { 
+        case "8ball":
+        let args = message.content.split(" ").slice(1);
+        let tte = args.join(" ")
+        if (!tte){
+        return message.reply("Merci une question :8ball:")};
 
-    if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-        play(connection, message);
-    });
-    break;
-    case "skip":
-    var server = servers[message.guild.id];
-    if (server.dispatcher) server.dispatcher.end();
-    break;
-    case "stop":
-    var server = servers[message.guild.id];
-    if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-    break;
+        var replys = [
+            "Oui",
+            "Non",
+            "Je ne sais pas",
+            "Peut-être"
+        ];
+        let reponse = (replys[Math.floor(Math.random() * replys.length)])
+        var bembed = new Discord.RichEmbed()
+        .setDescription("**__:8ball: 8ball__**")
+        .addField("__Question:__", tte)
+        .addField("__Réponse:__", reponse)
+        message.channel.sendEmbed(bembed)
     }
-});
+})
 
 /* Token */
-bot.login("NDcwNTc3NTY2MDA5MjYyMDgw.DjkYuQ.hxe9R-sgB4mubLtVmpn9qHcYCWw")
+bot.login(process.env.TOKEN);
