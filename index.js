@@ -33,6 +33,12 @@ bot.on("message", function(message) {
         .addField("__Question:__", tte)
         .addField("__Réponse:__", reponse)
         message.channel.sendEmbed(bembed)
+        break;
+        case "roll":
+            var roll = Math.floor(Math.random() * args[1]) +1;
+            if (!roll) return message.reply("Entre un numéro")
+            message.channel.send("Je choisis le numéro" + roll + "!");
+            break;
     }
 })
 
