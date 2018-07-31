@@ -15,7 +15,7 @@ bot.on("message", function(message) {
     if (!message.content.startsWith(prefix)) return;
     var args = message.content.substring(prefix.length).split(" ");
     switch (args[0].toLowerCase()) {
-        case "roll":
+        /*case "roll":
         let message = msg.content.split(" ");
 		let maxval = parseInt(message[1]);
 		if ((maxval > 10000) || (maxval < 1)) {
@@ -24,7 +24,7 @@ bot.on("message", function(message) {
 		let min = Math.ceil(0);
 		let max = Math.floor(maxval);
 		return msg.channel.send(Math.floor(Math.random() * (max - min) + min));
-        break;
+        break;*/
         case "8ball":
         let args = message.content.split(" ").slice(1);
         let tte = args.join(" ")
